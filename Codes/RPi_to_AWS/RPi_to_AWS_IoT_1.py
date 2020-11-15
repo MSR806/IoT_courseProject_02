@@ -38,8 +38,9 @@ def esp32_on_connect(client, userdata, flags, rc):
  
 # The callback for when a PUBLISH message is received from the server.
 def esp32_on_message(client, userdata, msg):
-    print(msg.topic+" "+str(msg.payload))
-    AWS_MQTTClient.publish(AWS_MQTT_TOPIC_data, str(msg.payload), 0)
+    print(msg.topic+" "+str(msg.payload)[2:-1])
+    payload = json.dumps(str(msg.payload)[2:-1])
+    AWS_MQTTClient.publish(AWS_MQTT_TOPIC_data, payload, 0)
 
 #connect and publish
 AWS_MQTTClient.connect()

@@ -86,7 +86,7 @@ void loop()
   getValues();
 
   client.publish(mqttTopic, String(mqttData).c_str(), true);
-  delay(1000);
+  delay(5000);
 }
 
 void getValues()
