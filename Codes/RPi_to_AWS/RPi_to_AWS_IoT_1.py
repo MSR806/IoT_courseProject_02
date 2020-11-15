@@ -10,7 +10,7 @@ ESP32_MQTT_SERVER = '192.168.1.3'
 ESP32_MQTT_PORT = 1883
 ESP32_MQTT_USER = 'cdavid'
 ESP32_MQTT_PASSWORD = 'cdavid'
-ESP32_MQTT_TOPIC = 'IoT/topic'
+ESP32_MQTT_TOPIC = 'esp32/topic'
 #--------------------------------------------------------------------------------------------#
 AWS_MQTT_TOPIC_data = 'AWS_IoT/topic/data'
 AWS_MQTT_TOPIC_info = 'AWS_IoT/topic/info'
@@ -21,7 +21,7 @@ AWS_MQTT_TOPIC_info = 'AWS_IoT/topic/info'
 AWS_MQTTClient = AWSIoTMQTTClient("myClientID")
 # myMQTTClient.configureEndpoint("YOUR.ENDPOINT", 8883)
 AWS_MQTTClient.configureCredentials("/home/pi/cert/Amazon_Root_CA_1.pem", "/home/pi/cert/61000fee35-private.pem.key", "/home/pi/cert/61000fee35-certificate.pem.crt")
-AWS_MQTTClient.configureEndpoint("your_endpoint", 8883)
+AWS_MQTTClient.configureEndpoint("a2gztmlqjheqhq-ats.iot.us-east-1.amazonaws.com", 8883)
 AWS_MQTTClient.configureOfflinePublishQueueing(-1)  # Infinite offline Publish queueing
 AWS_MQTTClient.configureDrainingFrequency(2)  # Draining: 2 Hz
 AWS_MQTTClient.configureConnectDisconnectTimeout(10)  # 10 sec
@@ -39,7 +39,7 @@ def esp32_on_connect(client, userdata, flags, rc):
 # The callback for when a PUBLISH message is received from the server.
 def esp32_on_message(client, userdata, msg):
     print(msg.topic+" "+str(msg.payload))
-    AWS_MQTTClient.publish(AWS_MQTT_TOPIC_data, msg.payload, 0)
+    AWS_MQTTClient.publish(AWS_MQTT_TOPIC_data, str(msg.payload), 0)
 
 #connect and publish
 AWS_MQTTClient.connect()
