@@ -134,7 +134,7 @@ void getValues()
 
   String ts = dayStamp+ " " +timeStamp;
 
-  mqttData = "{\"timestamp\":\"" +ts+ + "\",\"temperature\":" +String(temperature)+ ",\"humidity\":" +String(temperature)+ ",\"x\":" +String(accX)+ ",\"y\":" +String(accX)+ ",\"z\":" +String(accX)+ "}";
+  mqttData = "{\"timestamp\":\"" +ts+ + "\",\"temperature\":" +String(temperature)+ ",\"humidity\":" +String(humidity)+ ",\"x\":" +String(accX)+ ",\"y\":" +String(accX)+ ",\"z\":" +String(accX)+ "}";
 }
 
 void reconnect()
