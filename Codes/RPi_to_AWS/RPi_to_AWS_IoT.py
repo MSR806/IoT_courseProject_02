@@ -5,17 +5,17 @@ import time as t
 import json
 
 #mqtt for esp
-MQTT_ADDRESS = '192.168.0.8'
+MQTT_ADDRESS = '192.168.1.3'
 MQTT_USER = 'cdavid'
 MQTT_PASSWORD = 'cdavid'
-MQTT_TOPIC = 'home/+/+'
+MQTT_TOPIC = 'IoT/topic'
 
 # Define ENDPOINT, CLIENT_ID, PATH_TO_CERT, PATH_TO_KEY, PATH_TO_ROOT, MESSAGE, TOPIC, and RANGE
-ENDPOINT = "customEndpointUrl"
+ENDPOINT = "a2gztmlqjheqhq-ats.iot.us-east-1.amazonaws.com"
 CLIENT_ID = "testDevice"
-PATH_TO_CERT = "certificates/a1b23cd45e-certificate.pem.crt"
-PATH_TO_KEY = "certificates/a1b23cd45e-private.pem.key"
-PATH_TO_ROOT = "certificates/root.pem"
+PATH_TO_CERT = "/home/pi/certs/61000fee35-certificate.pem.crt"
+PATH_TO_KEY = "/home/pi/certs/61000fee35-private.pem.key"
+PATH_TO_ROOT = "/home/pi/certs/Amazon_Root_CA_1.pem"
 MESSAGE = "Hello World"
 TOPIC = "test/testing"
 RANGE = 20
@@ -64,7 +64,7 @@ def on_message_esp(client, userdata, msg):
 
 #mqtt client for nodemcu to rpi
 client_esp = mqtt.Client()
-client_esp.username_pw_set(MQTT_USER, MQTT_PASSWORD)
+#client_esp.username_pw_set(MQTT_USER, MQTT_PASSWORD)
 client_esp.on_connect = on_connect_esp
 client_esp.on_message = on_message_esp
 client_esp.connect(MQTT_ADDRESS, 1883)
