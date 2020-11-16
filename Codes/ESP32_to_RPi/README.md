@@ -1,3 +1,6 @@
+# Calibration
+#### [Blog link](https://learn.adafruit.com/adxl345-digital-accelerometer/programming)
+
 ## Calibrated values
 | | X | Y | Z |
 |----------|-------|-------|-------|
